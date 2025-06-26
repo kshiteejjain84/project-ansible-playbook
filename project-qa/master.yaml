@@ -1,0 +1,9 @@
+---
+- hosts: qa
+  user: kshiteej
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+  roles:
+    - qa-deployment

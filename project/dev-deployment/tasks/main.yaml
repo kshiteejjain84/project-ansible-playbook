@@ -1,1 +1,2 @@
-- name: 
+- name: create tomcat container
+  command: docker run -dp 8080:8080 --name tomcat10 tomcat:10

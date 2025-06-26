@@ -1,0 +1,5 @@
+- hosts: dev
+  user: velocity
+  become: yes
+  connection: ssh
+  gather_facts: yes

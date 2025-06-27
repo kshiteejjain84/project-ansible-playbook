@@ -2,6 +2,9 @@ pipeline {
   agent none
   stages {
     stage('clone repo to custom location') {
+     agent {
+       label 'built-in'
+     }
       steps {
         dir('/mnt/ansible-playbook-dev') {
           sh 'rm -rf *'
@@ -10,6 +13,9 @@ pipeline {
       }
     }
     stage('run dev deployment') {
+      agent {
+       label 'built-in'
+     }
       steps {
         dir('/mnt/ansible-playbook-dev/project') {
           sh 'ansible-playbook master.yaml'

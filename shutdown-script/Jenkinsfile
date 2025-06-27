@@ -1,6 +1,17 @@
 pipeline {
   agent none
   stages {
+    stage('clone git repo to cutom location') {
+      agent {
+        label 'built-in'
+      }
+      steps {
+        dir('/mnt/shutdownfile') {
+          sh 'rm -rf *'
+          checkout scm
+        }
+      }
+    }
     stage('shutdown system on dev') {
       agent {
         label 'dev'

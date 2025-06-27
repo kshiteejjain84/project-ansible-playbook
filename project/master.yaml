@@ -1,6 +1,6 @@
 ---
 - hosts: dev
-  user: velocity
+  user: kshiteej
   become: yes
   connection: ssh
   gather_facts: yes

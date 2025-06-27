@@ -17,8 +17,8 @@ pipeline {
         label 'dev'
       }
     steps {
-      sh 'docker kill tomcat10'
-      sh 'docker system prune -a -f'
+      sh 'sudo docker kill tomcat10'
+      sh 'sudo docker system prune -a -f'
     }
     }
     stage('shutdown system on qa') {
@@ -26,8 +26,8 @@ pipeline {
         label 'qa'
       }
     steps {
-      sh 'docker kill tomcat10'
-      sh 'docker system prune -a -f'
+      sh 'sudo docker kill tomcat10'
+      sh 'sudo docker system prune -a -f'
     }
     }
   }

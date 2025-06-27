@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('clone repo to custom location') {
       steps {
-        dir('/mnt/ansible-playbook-project') {
+        dir('/mnt/ansible-playbook-dev') {
           sh 'rm -rf *'
           checkout scm
         }
@@ -11,7 +11,7 @@ pipeline {
     }
     stage('run dev deployment') {
       steps {
-        dir('/mnt/ansible-playbook-project/project') {
+        dir('/mnt/ansible-playbook-dev/project') {
           sh 'ansible-playbook master.yaml'
         }
       }

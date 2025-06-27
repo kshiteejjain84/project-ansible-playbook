@@ -1,13 +1,20 @@
 pipeline {
   agent none
-stages {
-  stage('dev deployment plabook run') {
-    agent {
-      label 'built-in'
+  stages {
+    stage('clone repo to custom location') {
+      steps {
+        dir('/mnt/ansible-playbook-project') {
+          sh 'rm -rf *'
+          checkout scm
+        }
+      }
     }
-    steps {
-      dir('/mnt/
+    stage('run dev deployment') {
+      steps {
+        dir('/mnt/ansible-playbook-project/project') {
+          sh 'ansible-playbook master.yaml'
+        }
+      }
     }
   }
-}
 }

@@ -1,1 +1,13 @@
-
+pipeline {
+  agent none
+stages {
+  stage('dev deployment plabook run') {
+    agent {
+      label 'built-in'
+    }
+    steps {
+      dir('/mnt/
+    }
+  }
+}
+}

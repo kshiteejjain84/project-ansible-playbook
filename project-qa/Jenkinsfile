@@ -1,0 +1,20 @@
+pipeline {
+  agent none
+  stages {
+    stage('clone repo to custom location') {
+      steps {
+        dir('/mnt/ansible-playbook-qa') {
+          sh 'rm -rf *'
+          checkout scm
+        }
+      }
+    }
+    stage('run qa deployment') {
+      steps {
+        dir('/mnt/ansible-playbook-qa/project-qa') {
+          sh 'ansible-playbook master.yaml'
+        }
+      }
+    }
+  }
+}

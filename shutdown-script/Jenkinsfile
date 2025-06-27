@@ -1,0 +1,23 @@
+pipeline {
+  agent none
+  stages {
+    stage('shutdown system on dev') {
+      agent {
+        label 'dev'
+      }
+    steps {
+      sh 'docker kill tomcat10'
+      sh 'docker system prune -a -f'
+    }
+    }
+    stage('shutdown system on qa') {
+      agent {
+        label 'qa'
+      }
+    steps {
+      sh 'docker kill tomcat10'
+      sh 'docker system prune -a -f'
+    }
+    }
+  }
+}
